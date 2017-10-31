@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Curso de Django | {% block title %} Inicio {% endblock %}</title>
+</head>
+<body>
+    <div id="header">
+        {% if user.is_authenticated %}
+            <p>Bienvenido, <b>{{user.username}} | <a href="{% url 'logout' %}">logout</a></b></p>
+        {% else %}
+            <p>Bienvenido. Por favor <a href="{% url 'login' %}">log in</a></p>
+        {% endif%}
+        <h1>Curso de Django!!</h1>
+	<h1>PROBANDO</h1>
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="navigation">
+        <p><a href="{% url 'homepage' %}">Inicio</a> | <a href="{% url 'preguntas' %}">Preguntas</a></p>
+    </div>
+
+</body>
+</html>

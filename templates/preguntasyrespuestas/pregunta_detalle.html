@@ -1,0 +1,23 @@
+{% extends "base2.html" %}
+{% block title %} Pregunta - Detalle {% endblock %}
+{% block content %}
+    <h2>{{pregunta.asunto}} ?</h2>
+    <p><a href="{% url 'pregunta_editar' pregunta.id%}">Editar esta pregunta</a></p>
+    <p><b>Publicado:</b> {{pregunta.fecha_publicacion|date:"D, d/m/Y H:m:s"}}</p>
+    <p>
+        {% if pregunta.descripcion %}
+            {{ pregunta.descripcion }}
+        {% else %}
+            No se ha incluido descripcion
+        {% endif%}
+    </p>
+
+    <h3>Respuestas</h3>
+    <ul>
+        {% for respuesta in pregunta.respuesta_set.all %}
+            <li>{{ respuesta.contenido|safe}}</li>
+        {% empty %}
+            <li>Aun no hay respuestas</li>
+        {% endfor%}
+    </ul>
+{% endblock %}

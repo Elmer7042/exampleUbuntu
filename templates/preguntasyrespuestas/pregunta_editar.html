@@ -1,0 +1,8 @@
+{% extends "base2.html" %}
+{% block title %} Editar una pregunta {% endblock %}
+{% block content %}
+    <form action="" method="POST">{% csrf_token %}
+        {% include 'preguntasyrespuestas/form_snippets.html' %}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
